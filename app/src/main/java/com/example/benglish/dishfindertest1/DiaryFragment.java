@@ -8,6 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.benglish.dishfindertest1.Data.DishFinderAPI;
+import com.example.benglish.dishfindertest1.Data.GetIngredientController;
+import com.example.benglish.dishfindertest1.models.Ingredient;
+
+import java.util.ArrayList;
+
 public class DiaryFragment extends Fragment {
 
     @Nullable
@@ -19,5 +25,21 @@ public class DiaryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated( view, savedInstanceState );
+
+        GetIngredientController getIngredientController= new GetIngredientController(getIngredientCallback);
+        getIngredientController.start( "Diary" );
+
     }
+
+    DishFinderAPI.GetIngredientCallback getIngredientCallback= new DishFinderAPI.GetIngredientCallback() {
+        @Override
+        public void onResponse(ArrayList<Ingredient> ingredients) {
+
+        }
+
+        @Override
+        public void onFailure(String cause) {
+
+        }
+    };
 }
