@@ -76,7 +76,7 @@ public class FoodSearchFragment extends Fragment {
     private void getImages(View view){
 
         mNames.add( "Diary" );
-        mImageUrls.add( "https://brandmark.io/logo-rank/random/snap.png" );
+        mImageUrls.add( "https://static2.eghtesadonline.com/thumbnail/7s8Yo5xGrjGS/BGmQaTBpfAytX4aLRhq9RbEWa7bc5QW5pCHuzyG5otRNRZdnqt5pantj5o8bnpZX1gDYrWUUxpJ8csm-_V9yRCNcdp1QsQZ6ZduTs8jYW1YsPpy72VofiQ,,/%D9%84%D8%A8%D9%86%DB%8C%D8%A7%D8%AA.jpg" );
 
         mNames.add( "Vegetable" );
         mImageUrls.add("https://brandmark.io/logo-rank/random/mcdonalds.png");
