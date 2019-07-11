@@ -90,17 +90,16 @@ public class FoodSearchFragment extends Fragment {
         mNames.add( "Yahoo" );
         mImageUrls.add( "https://brandmark.io/logo-rank/random/yc.png" );
 
-
-
         initRecyclerView( view );
     }
 
     private void initRecyclerView(View view){
-        LinearLayoutManager linearLayout= new LinearLayoutManager( getContext() , LinearLayoutManager.HORIZONTAL,false );
+        LinearLayoutManager linearLayout= new LinearLayoutManager( getContext() , LinearLayoutManager.HORIZONTAL,true );
+        linearLayout.setReverseLayout( true );
         RecyclerView recyclerView= view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager( linearLayout );
 
-        MyRecyclerViewAdapter recyclerViewAdapter= new MyRecyclerViewAdapter( getContext(), mNames,mImageUrls );
+        MyRecyclerViewAdapter recyclerViewAdapter= new MyRecyclerViewAdapter( getContext(), mNames, mImageUrls );
         recyclerView.setAdapter( recyclerViewAdapter );
 
 
