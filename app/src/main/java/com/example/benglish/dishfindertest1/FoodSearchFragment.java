@@ -3,29 +3,17 @@ package com.example.benglish.dishfindertest1;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
+
+import com.example.benglish.dishfindertest1.Adapters.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class FoodSearchFragment extends Fragment {
 
@@ -52,7 +40,7 @@ public class FoodSearchFragment extends Fragment {
 
 
 
-        //Load DiaryFragment
+       // Load DiaryFragment
         iMainActivity= (IMainActivity) getActivity();
         iMainActivity.loadDiaryFragment();
 
@@ -79,16 +67,16 @@ public class FoodSearchFragment extends Fragment {
         mImageUrls.add( "https://static2.eghtesadonline.com/thumbnail/7s8Yo5xGrjGS/BGmQaTBpfAytX4aLRhq9RbEWa7bc5QW5pCHuzyG5otRNRZdnqt5pantj5o8bnpZX1gDYrWUUxpJ8csm-_V9yRCNcdp1QsQZ6ZduTs8jYW1YsPpy72VofiQ,,/%D9%84%D8%A8%D9%86%DB%8C%D8%A7%D8%AA.jpg" );
 
         mNames.add( "Vegetable" );
-        mImageUrls.add("https://brandmark.io/logo-rank/random/mcdonalds.png");
+        mImageUrls.add("https://www.theswag.com.au/wp-content/uploads/2019/02/vegetables-the-swag.jpeg");
 
-        mNames.add( "Twitter" );
-        mImageUrls.add( "https://brandmark.io/logo-rank/random/twitter.png" );
+        mNames.add( "Meats" );
+        mImageUrls.add( "http://www.cndajin.com/data/wls/53/7902282.jpg" );
 
-        mNames.add( "Pepsi" );
-        mImageUrls.add( "https://brandmark.io/logo-rank/random/pepsi.png" );
+        mNames.add( "Beans" );
+        mImageUrls.add( "https://images.thestar.com/A2m4YKeE3KfKr5-k1dgmfRYo_HA=/1086x725/smart/filters:cb(2700061000)/https://www.thestar.com/content/dam/thestar/life/2017/07/12/dont-fall-for-lectin-free-fad-the-diet-that-cuts-out-beans-and-grains/beans.jpg" );
 
-        mNames.add( "Yahoo" );
-        mImageUrls.add( "https://brandmark.io/logo-rank/random/yc.png" );
+        mNames.add( "Oil" );
+        mImageUrls.add( "https://c.tribune.com.pk/2017/07/1458661-bestbenefitsofoliveoiljaitunkatelforskinhairandhealth-1500103259-216-640x480.jpg" );
 
         initRecyclerView( view );
     }

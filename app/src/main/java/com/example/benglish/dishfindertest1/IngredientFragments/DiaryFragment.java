@@ -1,4 +1,4 @@
-package com.example.benglish.dishfindertest1;
+package com.example.benglish.dishfindertest1.IngredientFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.benglish.dishfindertest1.Data.DishFinderAPI;
 import com.example.benglish.dishfindertest1.Data.GetIngredientController;
+import com.example.benglish.dishfindertest1.Adapters.IngredientRecyclerViewAdapter;
+import com.example.benglish.dishfindertest1.R;
 import com.example.benglish.dishfindertest1.models.Ingredient;
 
 import java.util.ArrayList;

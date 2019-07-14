@@ -1,4 +1,4 @@
-package com.example.benglish.dishfindertest1;
+package com.example.benglish.dishfindertest1.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.benglish.dishfindertest1.IMainActivity;
+import com.example.benglish.dishfindertest1.R;
 
 import java.util.ArrayList;
 
@@ -50,14 +52,19 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 Log.d(TAG,"onclick"+mNames.get( position ));
                 Toast.makeText( mContext, mNames.get( position ), Toast.LENGTH_SHORT ).show();
 
+                iMainActivity= (IMainActivity) mContext;
                     if (mNames.get(position)=="Diary"){
-
-                        iMainActivity= (IMainActivity) mContext;
                         iMainActivity.loadDiaryFragment();
                     }
                     else if(mNames.get(position)=="Vegetable"){
-                        iMainActivity= (IMainActivity) mContext;
                         iMainActivity.loadVegetableFragment();
+                    }
+
+                    else if(mNames.get(position)=="Meats"){
+                    iMainActivity.loadMeatFragment();
+                    }
+                    else if(mNames.get(position)=="Beans") {
+                        iMainActivity.loadBeanFragment();
                     }
             }
         } );

@@ -6,5 +6,9 @@ public interface IMainActivity {
 
     void loadVegetableFragment();
 
+    void loadMeatFragment();
+
+    void loadBeanFragment();
+
 
 }

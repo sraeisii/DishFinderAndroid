@@ -5,7 +5,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements IMainActivity {
+import com.example.benglish.dishfindertest1.Adapters.MyFragmentPagerAdapter;
+import com.example.benglish.dishfindertest1.IngredientFragments.BeanFragment;
+import com.example.benglish.dishfindertest1.IngredientFragments.DiaryFragment;
+import com.example.benglish.dishfindertest1.IngredientFragments.MeatFragment;
+import com.example.benglish.dishfindertest1.IngredientFragments.VegetableFragment;
+
+class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -44,5 +50,19 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         getSupportFragmentManager().beginTransaction().add( R.id.category_fragment_container, vegetableFragment )
                 .commit();
 
+    }
+
+    @Override
+    public void loadMeatFragment() {
+        MeatFragment meatFragment= new MeatFragment();
+        getSupportFragmentManager().beginTransaction().add( R.id.category_fragment_container, meatFragment )
+                .commit();
+    }
+
+    @Override
+    public void loadBeanFragment() {
+        BeanFragment beanFragment= new BeanFragment();
+        getSupportFragmentManager().beginTransaction().add( R.id.category_fragment_container, beanFragment )
+                .commit();
     }
 }

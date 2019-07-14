@@ -1,8 +1,12 @@
-package com.example.benglish.dishfindertest1;
+package com.example.benglish.dishfindertest1.Adapters;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+
+import com.example.benglish.dishfindertest1.FavoriteFragment;
+import com.example.benglish.dishfindertest1.FoodSearchFragment;
+import com.example.benglish.dishfindertest1.ProfileFragment;
 
 public class MyFragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
 
