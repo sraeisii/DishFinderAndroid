@@ -22,14 +22,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     private static final String TAG= "MyRecyclerViewAdapter";
     private ArrayList<String> mNames= new ArrayList<>(  );
+    private ArrayList<String> mFaNames= new ArrayList<>(  );
     private ArrayList<String> mImageUrls= new ArrayList<>(  );
     private Context mContext;
     private IMainActivity iMainActivity;
 
-    public MyRecyclerViewAdapter( Context mContext, ArrayList<String> mNames, ArrayList<String> mImageUrls) {
+    public MyRecyclerViewAdapter( Context mContext, ArrayList<String> mNames,ArrayList<String> mFaNames ,ArrayList<String> mImageUrls) {
         this.mNames = mNames;
         this.mImageUrls = mImageUrls;
         this.mContext = mContext;
+        this.mFaNames=mFaNames;
     }
 
     @NonNull
@@ -45,7 +47,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG,"onBindViewHolder:called.");
         Glide.with(mContext).asBitmap().load( mImageUrls.get( position ) ).into( holder.image );
-        holder.name.setText( mNames.get( position ) );
+        holder.name.setText( mFaNames.get( position ) );
         holder.image.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

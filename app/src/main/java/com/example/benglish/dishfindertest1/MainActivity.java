@@ -9,7 +9,11 @@ import com.example.benglish.dishfindertest1.Adapters.MyFragmentPagerAdapter;
 import com.example.benglish.dishfindertest1.IngredientFragments.BeanFragment;
 import com.example.benglish.dishfindertest1.IngredientFragments.DiaryFragment;
 import com.example.benglish.dishfindertest1.IngredientFragments.MeatFragment;
+import com.example.benglish.dishfindertest1.IngredientFragments.ShowDishFragment;
 import com.example.benglish.dishfindertest1.IngredientFragments.VegetableFragment;
+import com.example.benglish.dishfindertest1.models.Ingredient;
+
+import java.util.ArrayList;
 
 class MainActivity extends AppCompatActivity implements IMainActivity {
 
@@ -36,6 +40,32 @@ class MainActivity extends AppCompatActivity implements IMainActivity {
       tabLayout = findViewById( R.id.tab_layout );
       viewPager = findViewById( R.id.view_pager );
   }
+//////////selectedIngredient
+    @Override
+    public ArrayList<Ingredient> getSelectedIngredients() {
+        return selectedIngredients;
+    }
+
+    @Override
+    public void setSelectedIngredients(Ingredient ingredient) {
+        selectedIngredients.add( ingredient );
+    }
+
+    @Override
+    public void removeSelectedIngredient(Ingredient ingredient) {
+        selectedIngredients.remove( ingredient );
+    }
+
+    @Override
+    public Boolean isIngredientChecked(Ingredient ingredient) {
+        for (int i = 0; i < selectedIngredients.size(); i++)
+        {
+            if(selectedIngredients.get( i ).getId() == ingredient.getId())
+                return true;
+        }
+
+        return false;
+    }
 
     @Override
     public void loadDiaryFragment() {
@@ -64,5 +94,12 @@ class MainActivity extends AppCompatActivity implements IMainActivity {
         BeanFragment beanFragment= new BeanFragment();
         getSupportFragmentManager().beginTransaction().add( R.id.category_fragment_container, beanFragment )
                 .commit();
+    }
+
+    @Override
+    public void loadShowDish() {
+        ShowDishFragment showDishFragment= new ShowDishFragment();
+        getSupportFragmentManager().beginTransaction().add( R.id.dish_fragment_container, showDishFragment )
+        .commit();
     }
 }

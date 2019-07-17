@@ -4,6 +4,7 @@ public class Ingredient {
 
     private int id;
     private String title;
+    private Boolean selected= false;
 
     public Ingredient() {
     }
@@ -22,5 +23,12 @@ public class Ingredient {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    public Boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
     }
 }
