@@ -2,9 +2,10 @@ package com.example.benglish.dishfindertest1.models;
 
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Dish {
+public class Dish implements Serializable {
     private Integer id;
     private String title;
     private String description;

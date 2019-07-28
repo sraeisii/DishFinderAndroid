@@ -1,5 +1,6 @@
 package com.example.benglish.dishfindertest1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -26,6 +27,7 @@ import com.example.benglish.dishfindertest1.models.DishList;
 import com.example.benglish.dishfindertest1.models.Ingredient;
 import com.example.benglish.dishfindertest1.models.IngredientIdList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FoodSearchFragment extends Fragment {
@@ -93,12 +95,11 @@ public class FoodSearchFragment extends Fragment {
         public void onResponse(ArrayList<Dish> dishes) {
             try{
                 DishList dishList= new DishList(dishes );
-                Bundle bundle = new Bundle(  );
-                bundle.putParcelable( "selected_dish", dishList );
-                ShowDishFragment showDishFragment= new ShowDishFragment();
-                showDishFragment.setArguments( bundle );
-                getChildFragmentManager().beginTransaction().add( R.id.dish_fragment_container, showDishFragment )
-                        .commit();
+
+                Intent intent = new Intent( getActivity(), LoadDishListActivity.class );
+                intent.putExtra("selected_dishes", dishList );
+                startActivity( intent );
+
             }
             catch (Exception e)
             {

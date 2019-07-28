@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.example.benglish.dishfindertest1.IMainActivity;
 import com.example.benglish.dishfindertest1.R;
 import com.example.benglish.dishfindertest1.models.Dish;
 
@@ -37,10 +35,8 @@ public class ShowDishRecyclerViewAdapter extends RecyclerView.Adapter<ShowDishRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        IMainActivity iMainActivity= (IMainActivity) mContext;
         holder.dishTitle.setText( dishes.get( position ).getTitle() );
         holder.dishDescription.setText( dishes.get( position ).getDescription() );
-        //Glide.with(mContext).asBitmap().load( dishes.get( position ) ).into( holder.dishImage );
         holder.dishCardView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

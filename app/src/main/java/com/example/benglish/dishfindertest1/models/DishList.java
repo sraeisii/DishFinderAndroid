@@ -3,30 +3,32 @@ package com.example.benglish.dishfindertest1.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DishList implements Parcelable {
+public class DishList implements Serializable {
     private ArrayList<Dish> dishes;
 
 
-    protected DishList(Parcel in) {
-    }
+//    protected DishList(Parcel in) {
+//    }
 
     public ArrayList<Dish> getDishes() {
+
         return dishes;
     }
 
-    public static final Creator<DishList> CREATOR = new Creator<DishList>() {
-        @Override
-        public DishList createFromParcel(Parcel in) {
-            return new DishList( in );
-        }
-
-        @Override
-        public DishList[] newArray(int size) {
-            return new DishList[size];
-        }
-    };
+//    public static final Creator<DishList> CREATOR = new Creator<DishList>() {
+//        @Override
+//        public DishList createFromParcel(Parcel in) {
+//            return new DishList( in );
+//        }
+//
+//        @Override
+//        public DishList[] newArray(int size) {
+//            return new DishList[size];
+//        }
+//    };
 
     public void setDishes(ArrayList<Dish> dishes) {
         this.dishes = dishes;
@@ -36,12 +38,12 @@ public class DishList implements Parcelable {
         this.dishes = dishes;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//    }
 }
