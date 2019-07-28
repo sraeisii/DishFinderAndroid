@@ -2,6 +2,7 @@ package com.example.benglish.dishfindertest1.Data;
 
 import com.example.benglish.dishfindertest1.models.Dish;
 import com.example.benglish.dishfindertest1.models.Ingredient;
+import com.example.benglish.dishfindertest1.models.IngredientIdList;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public interface DishFinderAPI {
     }
 
     @POST("dish/getDishesByIngredients")
-    Call<ArrayList<Dish>> getDishByIngredients(@Body ArrayList<Integer> includedIngredientIds);
+    Call<ArrayList<Dish>> getDishByIngredients(@Body IngredientIdList includedIngredientIds);
 
     interface getDishByIngredientsCallback{
 

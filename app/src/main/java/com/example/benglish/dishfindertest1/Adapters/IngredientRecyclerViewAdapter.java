@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,23 +49,23 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
         //is the comming ingredient position in the selectedIngredients?
         if(iMainActivity.isIngredientChecked( ingredients.get( position ) )== true)
         {
-            holder.ingredientItem.setBackgroundColor( Color.parseColor( "#CFEED1" ) );
+            holder.ingredientButton.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
         }
-        holder.ingredientName.setText( ingredients.get( position ).getTitle() );
-        holder.ingredientItem.setOnClickListener( new View.OnClickListener() {
+        holder.ingredientButton.setText( ingredients.get( position ).getTitle() );
+        holder.ingredientButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Log.d( "TAG","Clicked" );
 
                 if (ingredients.get( position ). getSelected()== false){
-                    holder.ingredientItem.setBackgroundColor( Color.parseColor( "#CFEED1" ) );
+                    holder.ingredientButton.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
                     ingredients.get( position ).setSelected( true );
                     iMainActivity.setSelectedIngredients( ingredients.get( position ) );
 
                 }
                 else {
-                    holder.ingredientItem.setBackgroundColor( Color.TRANSPARENT);
+                    holder.ingredientButton.setBackgroundResource(R.drawable.ingredient_buttonshape );
                     ingredients.get( position ).setSelected( false );
                     iMainActivity.removeSelectedIngredient( ingredients.get( position ) );
                 }
@@ -83,12 +84,12 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView ingredientName;
+        private Button ingredientButton;
         private CardView ingredientItem;
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
 
-            ingredientName= itemView.findViewById( R.id.ingredient_name );
+            ingredientButton= itemView.findViewById( R.id.ingredient_button );
             ingredientItem= itemView.findViewById( R.id.ingredient_item );
 
         }

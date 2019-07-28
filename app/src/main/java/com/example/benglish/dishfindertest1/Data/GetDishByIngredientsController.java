@@ -3,6 +3,7 @@ package com.example.benglish.dishfindertest1.Data;
 import android.util.Log;
 
 import com.example.benglish.dishfindertest1.models.Dish;
+import com.example.benglish.dishfindertest1.models.IngredientIdList;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class GetDishByIngredientsController {
     }
 
 
-    public void start(ArrayList<Integer> includedIngredientIds){
+    public void start(IngredientIdList includedIngredientIds){
         Retrofit retrofit= new Retrofit.Builder().baseUrl( DishFinderAPI.BASE_URL ).
                 addConverterFactory( GsonConverterFactory.create() ).build();
 

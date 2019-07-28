@@ -15,7 +15,7 @@ import com.example.benglish.dishfindertest1.models.Ingredient;
 
 import java.util.ArrayList;
 
-class MainActivity extends AppCompatActivity implements IMainActivity {
+public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -27,6 +27,23 @@ class MainActivity extends AppCompatActivity implements IMainActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//            }
+//
+//        });
+
 
         myFragmentPagerAdapter = new MyFragmentPagerAdapter( getSupportFragmentManager() );
         viewPager.setAdapter( myFragmentPagerAdapter );

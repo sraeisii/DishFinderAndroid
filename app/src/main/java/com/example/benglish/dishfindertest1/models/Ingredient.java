@@ -1,5 +1,7 @@
 package com.example.benglish.dishfindertest1.models;
 
+import java.util.ArrayList;
+
 public class Ingredient {
 
     private int id;
@@ -32,3 +34,4 @@ public class Ingredient {
         this.selected = selected;
     }
 }
+

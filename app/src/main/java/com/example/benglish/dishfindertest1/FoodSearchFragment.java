@@ -22,7 +22,9 @@ import com.example.benglish.dishfindertest1.Data.GetDishByIngredientsController;
 import com.example.benglish.dishfindertest1.Data.GetIngredientController;
 import com.example.benglish.dishfindertest1.IngredientFragments.ShowDishFragment;
 import com.example.benglish.dishfindertest1.models.Dish;
+import com.example.benglish.dishfindertest1.models.DishList;
 import com.example.benglish.dishfindertest1.models.Ingredient;
+import com.example.benglish.dishfindertest1.models.IngredientIdList;
 
 import java.util.ArrayList;
 
@@ -74,9 +76,14 @@ public class FoodSearchFragment extends Fragment {
                 for (int i=0; i< iMainActivity.getSelectedIngredients().size(); i++){
                     selectedIngredientIds.add( iMainActivity.getSelectedIngredients().get( i ).getId() );
                 }
+
+                IngredientIdList ingredientIdList = new IngredientIdList();
+                ingredientIdList.setItems( selectedIngredientIds );
+
+
                 GetDishByIngredientsController getDishByIngredientsController=
                         new GetDishByIngredientsController(getDishByIngredientsCallback);
-                getDishByIngredientsController.start(selectedIngredientIds);
+                getDishByIngredientsController.start(ingredientIdList);
 
             }
         } );
@@ -84,12 +91,19 @@ public class FoodSearchFragment extends Fragment {
     DishFinderAPI.getDishByIngredientsCallback getDishByIngredientsCallback = new DishFinderAPI.getDishByIngredientsCallback() {
         @Override
         public void onResponse(ArrayList<Dish> dishes) {
-//            Bundle bundle = new Bundle(  );
-//            bundle.putParcelable( "selected_dish", (Parcelable) iMainActivity.getSelectedIngredients() );
-//            ShowDishFragment showDishFragment= new ShowDishFragment();
-//            showDishFragment.setArguments( bundle );
-//            getChildFragmentManager().beginTransaction().add( R.id.dish_fragment_container, showDishFragment ).commit();
-            Log.d("TAG","dish "+dishes.get( 1 ).getTitle());
+            try{
+                DishList dishList= new DishList(dishes );
+                Bundle bundle = new Bundle(  );
+                bundle.putParcelable( "selected_dish", dishList );
+                ShowDishFragment showDishFragment= new ShowDishFragment();
+                showDishFragment.setArguments( bundle );
+                getChildFragmentManager().beginTransaction().add( R.id.dish_fragment_container, showDishFragment )
+                        .commit();
+            }
+            catch (Exception e)
+            {
+                Log.d("TAG",e.getMessage());
+            }
         }
 
         @Override
