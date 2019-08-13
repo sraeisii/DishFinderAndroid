@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.benglish.dishfindertest1.Adapters.ShowDishRecyclerViewAdapter;
 import com.example.benglish.dishfindertest1.models.DishList;
 
-public class LoadDishListActivity extends AppCompatActivity {
+public class LoadDishListActivity extends AppCompatActivity implements ILoadDishListActivity {
 
     private RecyclerView dishRecyclerView;
     private DishList dishList;
@@ -32,5 +32,14 @@ public class LoadDishListActivity extends AppCompatActivity {
         dishRecyclerView.setAdapter( showDishRecyclerViewAdapter );
 
     }
+
+    @Override
+    public void loadDishRecipeFragment() {
+        DishRecipeFragment dishRecipeFragment= new DishRecipeFragment();
+        getSupportFragmentManager().beginTransaction().add( R.id.dish_recipe_container, dishRecipeFragment )
+                .commit();
+    }
+
+
 }
 

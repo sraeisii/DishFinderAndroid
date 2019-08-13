@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.benglish.dishfindertest1.ILoadDishListActivity;
 import com.example.benglish.dishfindertest1.R;
 import com.example.benglish.dishfindertest1.models.Dish;
 
@@ -20,6 +21,7 @@ public class ShowDishRecyclerViewAdapter extends RecyclerView.Adapter<ShowDishRe
 
     private ArrayList<Dish> dishes= new ArrayList<>(  );
     private Context mContext;
+    private ILoadDishListActivity iLoadDishListActivity;
 
     public ShowDishRecyclerViewAdapter(ArrayList<Dish> dishes, Context mContext) {
         this.dishes = dishes;
@@ -40,6 +42,8 @@ public class ShowDishRecyclerViewAdapter extends RecyclerView.Adapter<ShowDishRe
         holder.dishCardView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                iLoadDishListActivity=(ILoadDishListActivity) mContext;
+                iLoadDishListActivity.loadDishRecipeFragment();
 
             }
         } );

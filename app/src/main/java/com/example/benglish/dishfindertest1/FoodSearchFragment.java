@@ -2,11 +2,9 @@ package com.example.benglish.dishfindertest1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,20 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.benglish.dishfindertest1.Adapters.IngredientRecyclerViewAdapter;
 import com.example.benglish.dishfindertest1.Adapters.MyRecyclerViewAdapter;
 import com.example.benglish.dishfindertest1.Data.DishFinderAPI;
 import com.example.benglish.dishfindertest1.Data.GetDishByIngredientsController;
-import com.example.benglish.dishfindertest1.Data.GetIngredientController;
-import com.example.benglish.dishfindertest1.IngredientFragments.ShowDishFragment;
 import com.example.benglish.dishfindertest1.models.Dish;
 import com.example.benglish.dishfindertest1.models.DishList;
-import com.example.benglish.dishfindertest1.models.Ingredient;
 import com.example.benglish.dishfindertest1.models.IngredientIdList;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FoodSearchFragment extends Fragment {
@@ -117,23 +109,23 @@ public class FoodSearchFragment extends Fragment {
 
         mNames.add( "Diary" );
         mFaNames.add( "لبنیات" );
-        mImageUrls.add( "https://static2.eghtesadonline.com/thumbnail/7s8Yo5xGrjGS/BGmQaTBpfAytX4aLRhq9RbEWa7bc5QW5pCHuzyG5otRNRZdnqt5pantj5o8bnpZX1gDYrWUUxpJ8csm-_V9yRCNcdp1QsQZ6ZduTs8jYW1YsPpy72VofiQ,,/%D9%84%D8%A8%D9%86%DB%8C%D8%A7%D8%AA.jpg" );
+        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/cheese-48.png" );
 
         mNames.add( "Vegetable" );
         mFaNames.add( "سبزیجات" );
-        mImageUrls.add("https://www.theswag.com.au/wp-content/uploads/2019/02/vegetables-the-swag.jpeg");
+        mImageUrls.add("https://www.iconsdb.com/icons/download/white/tomato-48.png");
 
         mNames.add( "Meats" );
         mFaNames.add( "پروتئین ها" );
-        mImageUrls.add( "http://www.cndajin.com/data/wls/53/7902282.jpg" );
+        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/chicken-48.png" );
 
         mNames.add( "Beans" );
         mFaNames.add( "غلات" );
-        mImageUrls.add( "https://images.thestar.com/A2m4YKeE3KfKr5-k1dgmfRYo_HA=/1086x725/smart/filters:cb(2700061000)/https://www.thestar.com/content/dam/thestar/life/2017/07/12/dont-fall-for-lectin-free-fad-the-diet-that-cuts-out-beans-and-grains/beans.jpg" );
+        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/coffee-bean-2-48.png");
 
         mNames.add( "Oil" );
         mFaNames.add( "روغن ها" );
-        mImageUrls.add( "https://c.tribune.com.pk/2017/07/1458661-bestbenefitsofoliveoiljaitunkatelforskinhairandhealth-1500103259-216-640x480.jpg" );
+        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/milk-48.png" );
 
         initRecyclerView( view );
     }
@@ -141,7 +133,7 @@ public class FoodSearchFragment extends Fragment {
     private void initRecyclerView(View view){
         LinearLayoutManager linearLayout= new LinearLayoutManager( getContext() , LinearLayoutManager.HORIZONTAL,true );
         linearLayout.setReverseLayout( true );
-        RecyclerView recyclerView= view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView= view.findViewById(R.id.ingredient_group_rv );
         recyclerView.setLayoutManager( linearLayout );
 
         MyRecyclerViewAdapter recyclerViewAdapter= new MyRecyclerViewAdapter( getContext(),mNames ,mFaNames, mImageUrls );

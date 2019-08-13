@@ -1,12 +1,15 @@
 package com.example.benglish.dishfindertest1.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +47,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d(TAG,"onBindViewHolder:called.");
         Glide.with(mContext).asBitmap().load( mImageUrls.get( position ) ).into( holder.image );
         holder.name.setText( mFaNames.get( position ) );
@@ -57,16 +60,20 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 iMainActivity= (IMainActivity) mContext;
                     if (mNames.get(position)=="Diary"){
                         iMainActivity.loadDiaryFragment();
+                       // holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
                     }
                     else if(mNames.get(position)=="Vegetable"){
                         iMainActivity.loadVegetableFragment();
+                       // holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
                     }
 
                     else if(mNames.get(position)=="Meats"){
                     iMainActivity.loadMeatFragment();
+                       // holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
                     }
                     else if(mNames.get(position)=="Beans") {
                         iMainActivity.loadBeanFragment();
+                        holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
                     }
             }
         } );
@@ -79,13 +86,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        CircleImageView image;
+        RelativeLayout ingredientGroupRL;
+        ImageView image;
         TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
             image = itemView.findViewById( R.id.image_view );
             name= itemView.findViewById( R.id.name );
+            ingredientGroupRL= itemView.findViewById( R.id.ingredient_group_rl );
         }
     }
 

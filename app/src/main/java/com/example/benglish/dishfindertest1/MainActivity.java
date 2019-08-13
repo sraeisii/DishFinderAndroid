@@ -27,22 +27,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//            }
-//
-//        });
 
 
         myFragmentPagerAdapter = new MyFragmentPagerAdapter( getSupportFragmentManager() );
@@ -113,10 +97,5 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                 .commit();
     }
 
-    @Override
-    public void loadShowDish() {
-        ShowDishFragment showDishFragment= new ShowDishFragment();
-        getSupportFragmentManager().beginTransaction().add( R.id.dish_fragment_container, showDishFragment )
-        .commit();
-    }
+
 }

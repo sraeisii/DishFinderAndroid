@@ -22,7 +22,4 @@ public interface IMainActivity {
 
     void loadBeanFragment();
 
-    void loadShowDish();
-
-
 }

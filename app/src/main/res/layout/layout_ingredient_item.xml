@@ -21,7 +21,9 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/ingredient_buttonshape"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp"
+            android:textColor="#AC3637">
 
         </Button>
 

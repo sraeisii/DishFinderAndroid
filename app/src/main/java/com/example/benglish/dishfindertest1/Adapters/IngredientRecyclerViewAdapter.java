@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,8 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
             holder.ingredientButton.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
         }
         holder.ingredientButton.setText( ingredients.get( position ).getTitle() );
+        //holder.ingredientButton.setCompoundDrawablesWithIntrinsicBounds
+                //(null,mContext.getResources().getDrawable(R.drawable.ic_milk),null,null);
         holder.ingredientButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

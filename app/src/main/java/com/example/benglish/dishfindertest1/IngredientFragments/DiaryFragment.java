@@ -45,7 +45,7 @@ public class DiaryFragment extends Fragment {
         @Override
         public void onResponse(ArrayList<Ingredient> ingredients) {
 
-            ingredientRecyclerView.setLayoutManager( new GridLayoutManager( getActivity(), 2 ) );
+            ingredientRecyclerView.setLayoutManager( new GridLayoutManager( getActivity(), 3 ) );
 
             IngredientRecyclerViewAdapter ingredientRecyclerViewAdapter=
                     new IngredientRecyclerViewAdapter( ingredients, getContext());
