@@ -109,23 +109,23 @@ public class FoodSearchFragment extends Fragment {
 
         mNames.add( "Diary" );
         mFaNames.add( "لبنیات" );
-        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/cheese-48.png" );
+        mImageUrls.add( "http://cdn.persiangig.com/preview/c7O4vGDh3C/large/Dairy2.jpg" );
 
         mNames.add( "Vegetable" );
         mFaNames.add( "سبزیجات" );
-        mImageUrls.add("https://www.iconsdb.com/icons/download/white/tomato-48.png");
+        mImageUrls.add("http://cdn.persiangig.com/preview/ilCzCnzLcl/large/Vegetable2.jpg");
 
         mNames.add( "Meats" );
         mFaNames.add( "پروتئین ها" );
-        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/chicken-48.png" );
+        mImageUrls.add( "http://cdn.persiangig.com/preview/6ftBN2xl4n/large/Protein2.jpg" );
 
         mNames.add( "Beans" );
-        mFaNames.add( "غلات" );
-        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/coffee-bean-2-48.png");
+        mFaNames.add( "حبوبات" );
+        mImageUrls.add( "http://cdn.persiangig.com/preview/HUrowFRGmm/large/Hobubat1.jpg");
 
         mNames.add( "Oil" );
         mFaNames.add( "روغن ها" );
-        mImageUrls.add( "https://www.iconsdb.com/icons/download/white/milk-48.png" );
+        mImageUrls.add( "http://cdn.persiangig.com/preview/n49KZ4VHNG/large/Oil1.jpg" );
 
         initRecyclerView( view );
     }

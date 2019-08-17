@@ -7,6 +7,15 @@ public class Ingredient {
     private int id;
     private String title;
     private Boolean selected= false;
+    private String imageBinary;
+
+    public String getImageBinary() {
+        return imageBinary;
+    }
+
+    public void setImageBinary(String imageBinary) {
+        this.imageBinary = imageBinary;
+    }
 
     public Ingredient() {
     }

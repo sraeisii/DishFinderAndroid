@@ -1,21 +1,19 @@
 package com.example.benglish.dishfindertest1.Adapters;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.example.benglish.dishfindertest1.IMainActivity;
 import com.example.benglish.dishfindertest1.R;
 import com.example.benglish.dishfindertest1.models.Ingredient;
@@ -28,6 +26,7 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
     private ArrayList<Ingredient> ingredients= new ArrayList<>(  );
     private Context mContext;
     private IMainActivity iMainActivity;
+
 
 
 
@@ -48,27 +47,40 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         iMainActivity= (IMainActivity) mContext;
         //is the comming ingredient position in the selectedIngredients?
+        holder.ingredientName.setText( ingredients.get( position ).getTitle() );
         if(iMainActivity.isIngredientChecked( ingredients.get( position ) )== true)
         {
-            holder.ingredientButton.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
+            holder.ingredientImage.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
         }
-        holder.ingredientButton.setText( ingredients.get( position ).getTitle() );
-        //holder.ingredientButton.setCompoundDrawablesWithIntrinsicBounds
-                //(null,mContext.getResources().getDrawable(R.drawable.ic_milk),null,null);
-        holder.ingredientButton.setOnClickListener( new View.OnClickListener() {
+
+        if(ingredients.get( position ).getImageBinary() != null)
+        {
+            try
+            {
+                byte[] imageByteArray = Base64.decode(ingredients.get( position ).getImageBinary(), Base64.DEFAULT);
+                Glide.with(mContext).asBitmap().load( imageByteArray).into( holder.ingredientImage );
+            }
+            catch(Exception ex)
+            {
+                Log.d( "BinaryImage", ex.getMessage() );
+            }
+
+        }
+
+        holder.ingredientImage.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Log.d( "TAG","Clicked" );
 
                 if (ingredients.get( position ). getSelected()== false){
-                    holder.ingredientButton.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
+                    holder.ingredientImage.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
                     ingredients.get( position ).setSelected( true );
                     iMainActivity.setSelectedIngredients( ingredients.get( position ) );
 
                 }
                 else {
-                    holder.ingredientButton.setBackgroundResource(R.drawable.ingredient_buttonshape );
+                    holder.ingredientImage.setBackgroundResource(R.drawable.ingredient_buttonshape );
                     ingredients.get( position ).setSelected( false );
                     iMainActivity.removeSelectedIngredient( ingredients.get( position ) );
                 }
@@ -87,13 +99,15 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private Button ingredientButton;
+        private ImageButton ingredientImage;
         private CardView ingredientItem;
+        private TextView ingredientName;
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
 
-            ingredientButton= itemView.findViewById( R.id.ingredient_button );
+            ingredientImage= itemView.findViewById( R.id.ingredient_image );
             ingredientItem= itemView.findViewById( R.id.ingredient_item );
+            ingredientName= itemView.findViewById( R.id.ingredient_name );
 
         }
     }

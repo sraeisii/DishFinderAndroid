@@ -2,12 +2,17 @@ package com.example.benglish.dishfindertest1.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,6 +34,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ArrayList<String> mImageUrls= new ArrayList<>(  );
     private Context mContext;
     private IMainActivity iMainActivity;
+    private int selectedIngredientTypePosition = 0;
 
     public MyRecyclerViewAdapter( Context mContext, ArrayList<String> mNames,ArrayList<String> mFaNames ,ArrayList<String> mImageUrls) {
         this.mNames = mNames;
@@ -37,6 +43,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         this.mFaNames=mFaNames;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -48,33 +55,45 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+
         Log.d(TAG,"onBindViewHolder:called.");
         Glide.with(mContext).asBitmap().load( mImageUrls.get( position ) ).into( holder.image );
         holder.name.setText( mFaNames.get( position ) );
+
+        if(position == selectedIngredientTypePosition)
+        {
+            holder.name.setVisibility( View.INVISIBLE );
+            holder.selectedType.setVisibility( View.VISIBLE );
+        }
+        else {
+            holder.name.setVisibility( View.VISIBLE );
+            holder.selectedType.setVisibility( View.INVISIBLE );
+        }
+
+
         holder.image.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                selectedIngredientTypePosition = position;
+
                 Log.d(TAG,"onclick"+mNames.get( position ));
-                Toast.makeText( mContext, mNames.get( position ), Toast.LENGTH_SHORT ).show();
 
                 iMainActivity= (IMainActivity) mContext;
-                    if (mNames.get(position)=="Diary"){
-                        iMainActivity.loadDiaryFragment();
-                       // holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
-                    }
-                    else if(mNames.get(position)=="Vegetable"){
-                        iMainActivity.loadVegetableFragment();
-                       // holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
-                    }
+                if (mNames.get(position)=="Diary"){
+                    iMainActivity.loadDiaryFragment();
+                }
+                else if(mNames.get(position)=="Vegetable"){
+                    iMainActivity.loadVegetableFragment();
+                }
 
-                    else if(mNames.get(position)=="Meats"){
+                else if(mNames.get(position)=="Meats"){
                     iMainActivity.loadMeatFragment();
-                       // holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
-                    }
-                    else if(mNames.get(position)=="Beans") {
-                        iMainActivity.loadBeanFragment();
-                        holder.ingredientGroupRL.setBackgroundColor( Color.parseColor("#EA5A56"));
-                    }
+                }
+                else if(mNames.get(position)=="Beans") {
+                    iMainActivity.loadBeanFragment();
+                }
+
+                notifyDataSetChanged();
             }
         } );
     }
@@ -89,12 +108,18 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         RelativeLayout ingredientGroupRL;
         ImageView image;
         TextView name;
+        ImageView selectedType;
 
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
+
             image = itemView.findViewById( R.id.image_view );
+            image.setClipToOutline(true);
             name= itemView.findViewById( R.id.name );
+            selectedType=itemView.findViewById( R.id.selected_type );
             ingredientGroupRL= itemView.findViewById( R.id.ingredient_group_rl );
+
         }
     }
 

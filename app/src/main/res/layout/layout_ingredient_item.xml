@@ -9,36 +9,47 @@
     <android.support.v7.widget.CardView
         android:id="@+id/ingredient_item"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layoutDirection="rtl"
         app:cardBackgroundColor="@android:color/transparent"
         app:cardElevation="0dp"
         android:foregroundGravity="center_horizontal"
         >
-
-        <Button
-            android:id="@+id/ingredient_button"
+        <RelativeLayout
+            android:id="@+id/ingredient_rl"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/ingredient_buttonshape"
-            android:layout_gravity="center_horizontal"
-            android:textSize="16sp"
-            android:textColor="#AC3637">
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ingredient_buttonshape">
 
-        </Button>
+            <ImageButton
+                android:id="@+id/ingredient_image"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beans"
+                android:textColor="#AC3637"
+                android:textSize="16sp"
+                />
 
-        <!--<TextView-->
-            <!--android:textSize="20sp"-->
-            <!--android:id="@+id/ingredient_name"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="پیاز"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_margin="10dp"-->
-            <!--android:textColor="#000"-->
-            <!--android:autoSizeTextType="uniform"-->
-            <!--android:autoSizeMinTextSize="8sp"-->
-            <!--/>-->
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/ingredient_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeTextType="uniform"
+            android:text="پیاز"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:layout_gravity="center|bottom"
+
+            />
+
+
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
