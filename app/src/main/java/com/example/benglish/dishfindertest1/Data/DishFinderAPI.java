@@ -33,4 +33,13 @@ public interface DishFinderAPI {
         void onFailure(String cause);
     }
 
+    @POST("dish/getDishById")
+    Call<Dish> getDishById (@Body Dish dish);
+
+    interface  getDishByIdCallback{
+
+        void onResponse(Dish dishes);
+        void onFailure(String cause);
+    }
+
 }

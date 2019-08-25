@@ -1,7 +1,5 @@
 package com.example.benglish.dishfindertest1.models;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -9,6 +7,28 @@ public class Dish implements Serializable {
     private Integer id;
     private String title;
     private String description;
+    private DishDetail dishDetailsDto;
+    private String imageBinary;
+
+
+
+
+    public String getImageBinary() {
+        return imageBinary;
+    }
+
+    public void setImageBinary(String imageBinary) {
+        this.imageBinary = imageBinary;
+    }
+
+
+    public DishDetail getDishDetailsDto() {
+        return dishDetailsDto;
+    }
+
+    public void setDishDetailsDto(DishDetail dishDetailsDto) {
+        this.dishDetailsDto = dishDetailsDto;
+    }
 
     public Integer getId() {
         return id;
@@ -18,11 +38,6 @@ public class Dish implements Serializable {
         this.id = id;
     }
 
-    public Dish(Integer id, String title, String description) {
-        this.title = title;
-        this.description = description;
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

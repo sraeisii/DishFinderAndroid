@@ -71,39 +71,13 @@ public class FoodSearchFragment extends Fragment {
                     selectedIngredientIds.add( iMainActivity.getSelectedIngredients().get( i ).getId() );
                 }
 
-                IngredientIdList ingredientIdList = new IngredientIdList();
-                ingredientIdList.setItems( selectedIngredientIds );
-
-
-                GetDishByIngredientsController getDishByIngredientsController=
-                        new GetDishByIngredientsController(getDishByIngredientsCallback);
-                getDishByIngredientsController.start(ingredientIdList);
-
+                Intent intent = new Intent( getActivity(), LoadDishListActivity.class );
+                intent.putExtra("selected_ingredientIds", selectedIngredientIds );
+                startActivity( intent );
             }
         } );
     }
-    DishFinderAPI.getDishByIngredientsCallback getDishByIngredientsCallback = new DishFinderAPI.getDishByIngredientsCallback() {
-        @Override
-        public void onResponse(ArrayList<Dish> dishes) {
-            try{
-                DishList dishList= new DishList(dishes );
 
-                Intent intent = new Intent( getActivity(), LoadDishListActivity.class );
-                intent.putExtra("selected_dishes", dishList );
-                startActivity( intent );
-
-            }
-            catch (Exception e)
-            {
-                Log.d("TAG",e.getMessage());
-            }
-        }
-
-        @Override
-        public void onFailure(String cause) {
-
-        }
-    };
 
     private void getImages(View view){
 
