@@ -14,7 +14,8 @@ import retrofit2.http.Query;
 
 public interface DishFinderAPI {
 
-    String BASE_URL="http://10.0.2.2:9100/api/";
+//    String BASE_URL="http://10.0.2.2:9100/api/";
+    String BASE_URL="http://192.168.1.183:9100/api/";
 
     @GET("ingredient/getByIngredientType")
     Call<ArrayList<Ingredient>> getIngredient(@Query( "ingredientType" ) String ingredientType);

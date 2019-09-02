@@ -10,6 +10,15 @@ public class DishDetail implements Serializable {
     private MealType mealType;
     private ArrayList<DishIngredient> dishIngredients;
     private int numberOfPeople;
+    private String rawRecipe;
+
+    public String getRawRecipe() {
+        return rawRecipe;
+    }
+
+    public void setRawRecipe(String rawRecipe) {
+        this.rawRecipe = rawRecipe;
+    }
 
     public int getNumberOfPeople() {
         return numberOfPeople;

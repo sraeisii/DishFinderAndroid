@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.benglish.dishfindertest1.Adapters.DishIngredientRecyclerViewAdapter;
-import com.example.benglish.dishfindertest1.Adapters.MyRecyclerViewAdapter;
 import com.example.benglish.dishfindertest1.Data.DishFinderAPI;
 import com.example.benglish.dishfindertest1.Data.GetDishByIdController;
 import com.example.benglish.dishfindertest1.models.Dish;
@@ -67,6 +66,7 @@ public class DishRecipeFragment extends Fragment {
 
             byte[] imageByteArray = Base64.decode(dishes.getImageBinary(), Base64.DEFAULT);
             Glide.with(getContext()).asBitmap().load( imageByteArray).into( wideDishImage );
+            dishRecipe.setText( dishes.getDishDetailsDto().getRawRecipe());
 
         }
 

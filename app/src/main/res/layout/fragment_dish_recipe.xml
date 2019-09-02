@@ -1,66 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#fafafc"
-    android:elevation="5dp">
-    <ImageView
-        android:id="@+id/wide_dish_image"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:src="@drawable/bread"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/wide_dish_image"
-        >
-        <TextView
-            android:id="@+id/ingredient_title"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
+        android:layout_height="match_parent"
+        android:background="#fafafc"
+        android:elevation="5dp"
+        android:clickable="true">
+        <RelativeLayout
+            android:id="@+id/wide_dish_image_rl"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#FDF0E2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:textSize="16sp"
-            android:text="مواد اولیه:"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
+            app:layout_constraintLeft_toLeftOf="parent">
+            <ImageView
+                android:id="@+id/wide_dish_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/bread"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dish_ingredient_list"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_margin="5dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ingredient_title">
-
-        </android.support.v7.widget.RecyclerView>
-        <TextView
-            android:id="@+id/dish_recipe_title"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/dish_ingredient_list"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textSize="16sp"
-            android:text="دستور پخت"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_marginBottom="5dp"/>
-        <TextView
-            android:id="@+id/dish_recipe"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/dish_recipe_title"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text=" با سلام و خسته نباشید"
-            android:textColor="#000"/>
+            app:layout_constraintTop_toBottomOf="@+id/wide_dish_image_rl"
+            >
+            <TextView
+                android:id="@+id/ingredient_title"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="20sp"
+                android:text="مواد اولیه:"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/dish_ingredient_list"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:orientation="horizontal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ingredient_title">
+
+            </android.support.v7.widget.RecyclerView>
+            <TextView
+                android:id="@+id/dish_recipe_title"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                app:layout_constraintTop_toBottomOf="@+id/dish_ingredient_list"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="20sp"
+                android:text="دستور پخت"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/dish_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:breakStrategy="balanced"
+                android:gravity="center_horizontal"
+                android:textSize="14sp"
+                app:autoSizeTextType="uniform"
+                android:text=" با سلام و خسته نباشید"
+                android:textColor="#000"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dish_recipe_title" />
+
+        </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
-
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

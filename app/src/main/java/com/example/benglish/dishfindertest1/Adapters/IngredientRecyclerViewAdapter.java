@@ -50,7 +50,7 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
         holder.ingredientName.setText( ingredients.get( position ).getTitle() );
         if(iMainActivity.isIngredientChecked( ingredients.get( position ) )== true)
         {
-            holder.ingredientImage.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
+            holder.ingredientImage.setBackgroundResource(R.drawable.ingredient_clicked_button_shape );
         }
 
         if(ingredients.get( position ).getImageBinary() != null)
@@ -74,7 +74,7 @@ public class IngredientRecyclerViewAdapter extends RecyclerView.Adapter<Ingredie
                 Log.d( "TAG","Clicked" );
 
                 if (ingredients.get( position ). getSelected()== false){
-                    holder.ingredientImage.setBackgroundResource(R.drawable.ingredinet_clicked_buttonshape );
+                    holder.ingredientImage.setBackgroundResource(R.drawable.ingredient_clicked_button_shape );
                     ingredients.get( position ).setSelected( true );
                     iMainActivity.setSelectedIngredients( ingredients.get( position ) );
 

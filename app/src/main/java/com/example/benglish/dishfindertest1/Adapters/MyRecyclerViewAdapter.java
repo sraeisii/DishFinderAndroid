@@ -1,30 +1,23 @@
 package com.example.benglish.dishfindertest1.Adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.benglish.dishfindertest1.IMainActivity;
 import com.example.benglish.dishfindertest1.R;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
@@ -48,7 +41,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        View view= LayoutInflater.from( parent.getContext()).inflate( R.layout.layout_listitem, parent , false);
+        View view= LayoutInflater.from( parent.getContext()).inflate( R.layout.layout_ingredient_group, parent , false);
 
         return new ViewHolder( view );
     }
@@ -57,21 +50,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         Log.d(TAG,"onBindViewHolder:called.");
-        Glide.with(mContext).asBitmap().load( mImageUrls.get( position ) ).into( holder.image );
-        holder.name.setText( mFaNames.get( position ) );
+        Glide.with(mContext).asBitmap().load( mImageUrls.get( position ) ).into( holder.ingredientGroupImage );
+        holder.ingredientGroupName.setText( mFaNames.get( position ) );
 
         if(position == selectedIngredientTypePosition)
         {
-            holder.name.setVisibility( View.INVISIBLE );
+            holder.ingredientGroupName.setVisibility( View.INVISIBLE );
             holder.selectedType.setVisibility( View.VISIBLE );
         }
         else {
-            holder.name.setVisibility( View.VISIBLE );
+            holder.ingredientGroupName.setVisibility( View.VISIBLE );
             holder.selectedType.setVisibility( View.INVISIBLE );
         }
 
 
-        holder.image.setOnClickListener( new View.OnClickListener() {
+        holder.ingredientGroupImage.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedIngredientTypePosition = position;
@@ -106,17 +99,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         RelativeLayout ingredientGroupRL;
-        ImageView image;
-        TextView name;
+        ImageView ingredientGroupImage;
+        TextView ingredientGroupName;
         ImageView selectedType;
 
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
 
-            image = itemView.findViewById( R.id.image_view );
-            image.setClipToOutline(true);
-            name= itemView.findViewById( R.id.name );
+            ingredientGroupImage = itemView.findViewById( R.id.ingredient_group_image_view );
+            ingredientGroupImage.setClipToOutline(true);
+            ingredientGroupName = itemView.findViewById( R.id.ingredient_group_name );
             selectedType=itemView.findViewById( R.id.selected_type );
             ingredientGroupRL= itemView.findViewById( R.id.ingredient_group_rl );
 
